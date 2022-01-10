@@ -11,8 +11,8 @@ export const App = () => {
         <div className="App">
             <HashRouter>
                 <Provider store={store}>
-                    <Header/>
-                    <Routes/>
+                    <Header />
+                    <Routes />
                 </Provider>
             </HashRouter>
         </div>
