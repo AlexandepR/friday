@@ -31,11 +31,6 @@ export const Header = () => {
                     Create new password
                 </NavLink>
             </div>
-            <div className={classes.item}>
-                <NavLink to={Path.SuperComponents} activeClassName={classes.active}>
-                    SuperComponents
-                </NavLink>
-            </div>
         </nav>
     );
 };
