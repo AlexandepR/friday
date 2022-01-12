@@ -1,5 +1,7 @@
 import React, {useState} from "react"
 import s from "./Registration.module.css"
+import {useDispatch} from "react-redux";
+import {createUserTC} from "../../bll/registrationReducer";
 
 export const Registration = () => {
 
@@ -8,9 +10,13 @@ export const Registration = () => {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    const dispatch = useDispatch()
+
     const handleSubmit = () => {
         // e.preventDefault();
-        console.log(email, password)
+        // console.log(email, password)
+        console.log('wadw')
+        dispatch(createUserTC(email, password))
     }
 
     return (
