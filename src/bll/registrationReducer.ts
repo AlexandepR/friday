@@ -3,19 +3,21 @@ import {Dispatch} from "redux";
 import {LogIn} from "../ui/LogIn/LogIn";
 import { createBrowserHistory } from "history";
 
-const customHistory = createBrowserHistory();
+// const customHistory = createBrowserHistory();
 
 type InitStateType = typeof initState;
 
-const initState = {};
+const initState = {
+    regSuccessful: false
+};
 
 export const registrationReducer = (
     state = initState,
     action: any
 ): InitStateType => {
     switch (action.type) {
-        // case "CREATE-USER":
-        //     return {...state, action.email, action.password}
+        case "SET-ERROR":
+            return {...state, regSuccessful: action.regSuccesful}
         default:
             return state;
     }
@@ -31,6 +33,10 @@ export const registrationReducer = (
 //     return {type: ""}
 // }
 
+export const setSuccesfulAC = (regSuccesful: boolean) => {
+    return {type: 'SET-ERROR', regSuccesful}
+}
+
 export const createUserTC = (email: string, password: string) => {
     console.log('createUserTC')
     return (dispatch: any) => {
@@ -38,17 +44,15 @@ export const createUserTC = (email: string, password: string) => {
             .then(res => {
                 debugger
                 if (res.status === 201) {
-                    // alert('status 201')
                     alert(res.statusText)
-                    return customHistory.push('/login')
-                    // dispatch(loggedInAC(true))
+                    dispatch(setSuccesfulAC(true))
+                    // return customHistory.push('/login')
                 }
-                // dispatch(registrationAC(email, password))
             })
             .catch((err) => {
                 debugger
                 alert(err.message)
-                // console.log('catch')
             })
     }
 }
+

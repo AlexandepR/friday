@@ -1,7 +1,7 @@
 import React, {useState} from "react"
 import s from "./Registration.module.css"
 import {useDispatch, useSelector} from "react-redux";
-import {createUserTC} from "../../bll/registrationReducer";
+import {createUserTC, setSuccesfulAC} from "../../bll/registrationReducer";
 import { useHistory } from "react-router-dom";
 import {RootStateType} from "../../bll/store";
 
@@ -11,9 +11,7 @@ export const Registration = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
-    // const isLogin = useSelector<RootStateType, boolean>(state => state.logIn)
-
-
+    const regSuccessful = useSelector<RootStateType, boolean>(state => state.registration.regSuccessful)
 
     const dispatch = useDispatch()
 
@@ -25,9 +23,10 @@ export const Registration = () => {
         dispatch(createUserTC(email, password))
     }
 
-    // if (isLogin) {
-    //     history.push("/login");
-    // }
+    if (regSuccessful) {
+        history.push("/login");
+        dispatch(setSuccesfulAC(false))
+    }
 
     return (
         <div className={s.wrapper}>
