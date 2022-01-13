@@ -1,7 +1,9 @@
 import React, {useState} from "react"
 import s from "./Registration.module.css"
-import {useDispatch} from "react-redux";
+import {useDispatch, useSelector} from "react-redux";
 import {createUserTC} from "../../bll/registrationReducer";
+import { useHistory } from "react-router-dom";
+import {RootStateType} from "../../bll/store";
 
 export const Registration = () => {
 
@@ -9,15 +11,23 @@ export const Registration = () => {
 
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    // const isLogin = useSelector<RootStateType, boolean>(state => state.logIn)
+
+
 
     const dispatch = useDispatch()
 
+    const history = useHistory();
+
     const handleSubmit = () => {
         // e.preventDefault();
-        // console.log(email, password)
-        console.log('wadw')
+
         dispatch(createUserTC(email, password))
     }
+
+    // if (isLogin) {
+    //     history.push("/login");
+    // }
 
     return (
         <div className={s.wrapper}>
