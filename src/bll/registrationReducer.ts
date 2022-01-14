@@ -1,14 +1,11 @@
 import {registrationAPI} from "../api/registration-api";
-import {Dispatch} from "redux";
-import {LogIn} from "../ui/LogIn/LogIn";
-import { createBrowserHistory } from "history";
-
-// const customHistory = createBrowserHistory();
 
 type InitStateType = typeof initState;
 
 const initState = {
-    regSuccessful: false
+    regSuccessful: false,
+    isLoading: false,
+    disable: false
 };
 
 export const registrationReducer = (
@@ -16,6 +13,10 @@ export const registrationReducer = (
     action: any
 ): InitStateType => {
     switch (action.type) {
+        case "SET-DISABLED":
+            return {...state, disable: action.isDisabled}
+        case "SET-LOADING":
+            return {...state, isLoading: action.isLoading}
         case "SET-ERROR":
             return {...state, regSuccessful: action.regSuccesful}
         default:
@@ -33,25 +34,36 @@ export const registrationReducer = (
 //     return {type: ""}
 // }
 
+export const setStatus = (isLoading: boolean) => {
+    return {type: 'SET-LOADING', isLoading}
+}
+
 export const setSuccesfulAC = (regSuccesful: boolean) => {
     return {type: 'SET-ERROR', regSuccesful}
+}
+
+export const setDisabled = (isDisabled: boolean) => {
+    return {type: 'SET-DISABLED', isDisabled}
 }
 
 export const createUserTC = (email: string, password: string) => {
     console.log('createUserTC')
     return (dispatch: any) => {
+        dispatch(setDisabled(true))
+        dispatch(setStatus(true))
         registrationAPI.createUser(email, password)
             .then(res => {
-                debugger
                 if (res.status === 201) {
                     alert(res.statusText)
                     dispatch(setSuccesfulAC(true))
-                    // return customHistory.push('/login')
                 }
             })
             .catch((err) => {
-                debugger
                 alert(err.message)
+            })
+            .finally(() => {
+                dispatch(setStatus(false))
+                dispatch(setDisabled(false))
             })
     }
 }
