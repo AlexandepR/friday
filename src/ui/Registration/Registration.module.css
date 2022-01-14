@@ -18,6 +18,18 @@ body {
     width: 100%;
 }
 
+.titleName {
+    font-size: 26px;
+    line-height: 39px;
+    color: #2D2E46;
+}
+
+.titleReg {
+    font-size: 22px;
+    line-height: 33px;
+    color: #2D2E46;
+}
+
 .wrapperForm {
     height: 300px;
 }
@@ -33,6 +45,10 @@ body {
     margin-top: 100px;
 }
 
+.buttonReg:hover {
+    background-color: #777bc1;
+}
+
 .buttonCancel {
     background: #D7D8EF;
     border-radius: 30px;
@@ -41,15 +57,19 @@ body {
     width: 124px;
     border: none;
     margin-right: 10px;
+    opacity: 0.3;
 
 }
 
 input {
     border: 0;
-    border-bottom: 1px solid #24254A;
+    border-bottom: 1px solid #adadd9;
     background-color: #F9F9FE;
     outline: 0;
-    opacity: 0.2;
+    /*opacity: 0.2;*/
+    color: #2D2E46;
+    font-size: 16px;
+    line-height: 24px;
 }
 
 .wrapperInput input {
@@ -66,3 +86,11 @@ input {
     color: #24254A;
     opacity: 0.5;
 }
+
+
+.preloader {
+    position: absolute;
+    margin-top: 150px;
+    margin-left: 150px;
+}
+

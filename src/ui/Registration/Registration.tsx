@@ -36,8 +36,8 @@ export const Registration = () => {
         <div className={s.wrapper}>
 
             <div className={s.title}>
-                <h2>It-incubator</h2>
-                <h3>Registration</h3>
+                <h2 className={s.titleName}>It-incubator</h2>
+                <h3 className={s.titleReg}>Registration</h3>
             </div>
             <div className={s.wrapperForm}>
                 <form onSubmit={handleSubmit}>
@@ -51,11 +51,12 @@ export const Registration = () => {
                         <input disabled={disabled} type='password' value={password}
                                onChange={(e) => setPassword(e.target.value)}/>
                     </div>
-                    <button className={s.buttonCancel} disabled={disabled}>Cancel</button>
-                    <button className={s.buttonReg} disabled={disabled}>Registration{handleSubmit}</button>
+                    <button className={s.buttonCancel} disabled={true}>Cancel</button>
+                    <button className={s.buttonReg} disabled={disabled}>Sign Up</button>
                 </form>
             </div>
             {setStatus && <div className={s.preloader}><img src={preloader}/></div>}
+
         </div>
     )
 }

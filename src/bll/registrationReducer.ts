@@ -24,16 +24,6 @@ export const registrationReducer = (
     }
 };
 
-
-// export const registrationAC = (email: string, password: string) => {
-//     return {type: "CREATE-USER"}
-// }
-
-
-// export const loggedInAC = (loggedIn: boolean) => {
-//     return {type: ""}
-// }
-
 export const setStatus = (isLoading: boolean) => {
     return {type: 'SET-LOADING', isLoading}
 }
@@ -59,7 +49,7 @@ export const createUserTC = (email: string, password: string) => {
                 }
             })
             .catch((err) => {
-                alert(err.message)
+                alert(err.response.data.error)
             })
             .finally(() => {
                 dispatch(setStatus(false))
