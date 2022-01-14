@@ -37,7 +37,6 @@ export const setDisabledAC = (isDisabled: boolean) => {
 }
 
 export const createUserTC = (email: string, password: string) => {
-    console.log('createUserTC')
     return (dispatch: any) => {
         dispatch(setDisabledAC(true))
         dispatch(setStatusAC(true))

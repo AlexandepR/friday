@@ -1,4 +1,4 @@
-import React, {ChangeEvent, MouseEventHandler, useState} from "react"
+import React, {useState} from "react"
 import s from "./Registration.module.css"
 import {useDispatch, useSelector} from "react-redux";
 import {createUserTC, setStatusAC, setSuccesfulAC} from "../../bll/registrationReducer";
@@ -21,8 +21,6 @@ export const Registration = () => {
     const history = useHistory();
 
     const handleSubmit = () => {
-        // e.preventDefault();
-
         dispatch(createUserTC(email, password))
     }
 
@@ -60,7 +58,6 @@ export const Registration = () => {
                 <button onClick={handlerCancel} className={s.buttonCancel} disabled={disabled}>Cancel</button>
             </div>
             {setStatus && <div className={s.preloader}><img src={preloader}/></div>}
-
         </div>
     )
 }
