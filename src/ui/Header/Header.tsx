@@ -31,6 +31,11 @@ export const Header = () => {
                     Create new password
                 </NavLink>
             </div>
+            <div className={classes.item}>
+                <NavLink to={Path.ForgotPassword} activeClassName={classes.active}>
+                    Forgot the Password
+                </NavLink>
+            </div>
         </nav>
     );
 };

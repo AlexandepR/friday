@@ -7,6 +7,7 @@ import {ResetPassword} from "../ResetPassword/ResetPassword";
 import {CreateNewPassword} from "../CreateNewPassword/CreateNewPassword";
 import {SuperComponents} from "../SuperComponents/SuperComponents";
 import {LogIn} from "../LogIn/LogIn";
+import ForgotPassword from '../ForgotPassword/ForgotPassword';
 
 export enum Path {
     LogIn = "/login",
@@ -16,6 +17,7 @@ export enum Path {
     CreateNewPassword = "/createNewPassword",
     SuperComponents = "/superComponents",
     Error404 = "/404",
+    ForgotPassword = "/forgot",
 }
 
 export const Routes = () => {
@@ -33,6 +35,7 @@ export const Routes = () => {
                 />
                 <Route path={Path.SuperComponents} render={() => <SuperComponents/>}/>
                 <Route path={Path.Error404} render={() => <Error404/>}/>
+                <Route path={Path.ForgotPassword} render={() => <ForgotPassword/>}/>
                 <Redirect from={"*"} to={Path.Error404}/>
             </Switch>
         </div>
