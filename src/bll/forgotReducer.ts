@@ -1,21 +1,20 @@
-/*type InitStateType = typeof initState;*/
-
 const forgotInitialState = {
 
 };
 
-/*export const forgotThePasswordReducer = (
-    state = initState,
-    action: any
-): InitStateType => {
-    switch (action.type) {
-        default:
-            return state;
-    }
-};*/
+/* useEffect(()=>{
+       forgotAPI.forgotEmail()
+           .then(res=>[
+               (res.status === 200){
 
-/*import {forgotInitialState} from "./forgotInitialState";
-import {IForgotActions, FORGOT} from "./forgotActions";*/
+               }
+           ])
+           .catch(err=>{
+               console.dir(err)
+               err.data.error
+           })
+   })*/
+
 
 const FORGOT = 'FORGOT/SOME'
 

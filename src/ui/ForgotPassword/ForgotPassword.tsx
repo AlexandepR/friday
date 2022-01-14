@@ -1,9 +1,18 @@
 import React from 'react';
 
 const ForgotPassword = () => {
+
+
+
     return (
         <div>
-            Forgot
+            <div>
+                <h1>Forgot the password</h1>
+                <input type="text" name="" id=""/>
+            </div>
+            <div>
+                <button>Send</button>
+            </div>
         </div>
     );
 };

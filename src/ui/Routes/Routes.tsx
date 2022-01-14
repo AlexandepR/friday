@@ -36,7 +36,7 @@ export const Routes = () => {
                 <Route path={Path.SuperComponents} render={() => <SuperComponents/>}/>
                 <Route path={Path.Error404} render={() => <Error404/>}/>
                 <Route path={Path.ForgotPassword} render={() => <ForgotPassword/>}/>
-                <Redirect from={"*"} to={Path.Error404}/>
+               {/* <Redirect from={"*"} to={Path.Error404}/>*/}
             </Switch>
         </div>
     );
