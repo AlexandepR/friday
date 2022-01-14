@@ -1,7 +1,7 @@
-import React, {useState} from "react"
+import React, {ChangeEvent, MouseEventHandler, useState} from "react"
 import s from "./Registration.module.css"
 import {useDispatch, useSelector} from "react-redux";
-import {createUserTC, setSuccesfulAC} from "../../bll/registrationReducer";
+import {createUserTC, setStatusAC, setSuccesfulAC} from "../../bll/registrationReducer";
 import {useHistory} from "react-router-dom";
 import {RootStateType} from "../../bll/store";
 import preloader from "./../../asset/Settings.gif"
@@ -31,10 +31,14 @@ export const Registration = () => {
         dispatch(setSuccesfulAC(false))
     }
 
+    const handlerCancel = () => {
+        dispatch(setStatusAC(true))
+        history.push("/login");
+        dispatch(setStatusAC(false))
+    }
+
     return (
-
         <div className={s.wrapper}>
-
             <div className={s.title}>
                 <h2 className={s.titleName}>It-incubator</h2>
                 <h3 className={s.titleReg}>Registration</h3>
@@ -51,9 +55,9 @@ export const Registration = () => {
                         <input disabled={disabled} type='password' value={password}
                                onChange={(e) => setPassword(e.target.value)}/>
                     </div>
-                    <button className={s.buttonCancel} disabled={true}>Cancel</button>
                     <button className={s.buttonReg} disabled={disabled}>Sign Up</button>
                 </form>
+                <button onClick={handlerCancel} className={s.buttonCancel} disabled={disabled}>Cancel</button>
             </div>
             {setStatus && <div className={s.preloader}><img src={preloader}/></div>}
 

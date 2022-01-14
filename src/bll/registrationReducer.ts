@@ -24,7 +24,7 @@ export const registrationReducer = (
     }
 };
 
-export const setStatus = (isLoading: boolean) => {
+export const setStatusAC = (isLoading: boolean) => {
     return {type: 'SET-LOADING', isLoading}
 }
 
@@ -32,15 +32,15 @@ export const setSuccesfulAC = (regSuccesful: boolean) => {
     return {type: 'SET-ERROR', regSuccesful}
 }
 
-export const setDisabled = (isDisabled: boolean) => {
+export const setDisabledAC = (isDisabled: boolean) => {
     return {type: 'SET-DISABLED', isDisabled}
 }
 
 export const createUserTC = (email: string, password: string) => {
     console.log('createUserTC')
     return (dispatch: any) => {
-        dispatch(setDisabled(true))
-        dispatch(setStatus(true))
+        dispatch(setDisabledAC(true))
+        dispatch(setStatusAC(true))
         registrationAPI.createUser(email, password)
             .then(res => {
                 if (res.status === 201) {
@@ -52,8 +52,8 @@ export const createUserTC = (email: string, password: string) => {
                 alert(err.response.data.error)
             })
             .finally(() => {
-                dispatch(setStatus(false))
-                dispatch(setDisabled(false))
+                dispatch(setStatusAC(false))
+                dispatch(setDisabledAC(false))
             })
     }
 }
