@@ -33,22 +33,26 @@ export const Registration = () => {
 
     return (
 
-        <div>
+        <div className={s.wrapper}>
 
-
-            <div className={s.wrapper}>
-                <form className={s.form} onSubmit={handleSubmit}>
-                    <div>
+            <div className={s.title}>
+                <h2>It-incubator</h2>
+                <h3>Registration</h3>
+            </div>
+            <div className={s.wrapperForm}>
+                <form onSubmit={handleSubmit}>
+                    <div className={s.wrapperInput}>
                         <label className={s.label}>Email</label>
                         <input disabled={disabled} type='email' value={email}
                                onChange={(e) => setEmail(e.target.value)}/>
                     </div>
-                    <div>
+                    <div className={s.wrapperInput}>
                         <label>Password</label>
                         <input disabled={disabled} type='password' value={password}
                                onChange={(e) => setPassword(e.target.value)}/>
                     </div>
-                    <button disabled={disabled}>Registration{handleSubmit}</button>
+                    <button className={s.buttonCancel} disabled={disabled}>Cancel</button>
+                    <button className={s.buttonReg} disabled={disabled}>Registration{handleSubmit}</button>
                 </form>
             </div>
             {setStatus && <div className={s.preloader}><img src={preloader}/></div>}
