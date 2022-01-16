@@ -1,20 +1,23 @@
-import React from "react";
+import React, {useEffect} from "react";
 import "./App.css";
-import {Provider} from "react-redux";
-import {HashRouter} from "react-router-dom";
 import {Header} from "./ui/Header/Header";
-import {store} from "./bll/store";
 import {Routes} from "./ui/Routes/Routes";
+import {useDispatch} from "react-redux";
+import {authMe} from "./ui/LogIn/LogInActions";
+import styles from "./App.module.css";
 
 export const App = () => {
+    const dispatch = useDispatch()
+
+    useEffect(() => {
+            dispatch(authMe())
+    }, [])
+
     return (
-        <div className="App">
-            <HashRouter>
-                <Provider store={store}>
-                    <Header />
-                    <Routes />
-                </Provider>
-            </HashRouter>
+        <div className={styles.AppBlock}
+        >
+            <Header />
+            <Routes />
         </div>
     );
 };

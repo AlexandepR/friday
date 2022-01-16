@@ -18,3 +18,9 @@ const rootReducer = combineReducers({
     error404: error404Reducer,
 });
 export const store = createStore(rootReducer, applyMiddleware(thunk));
+
+
+export type AppRootStoreType = ReturnType<typeof rootReducer> // Добавил
+
+// @ts-ignore
+window.store = store; // for dev

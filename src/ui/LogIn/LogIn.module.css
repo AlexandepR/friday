@@ -1,0 +1,83 @@
+.blockMain{
+    display: flex;
+    justify-content: space-around;
+    align-items: flex-end;
+    border: 3px solid rgba(248, 184, 6, 0.94);
+    border-radius: 10px;
+    height: 350px;
+    width: 250px;
+    background: #697879;
+    padding: 50px;
+    box-shadow: 0 0 60px 1px gold;
+    opacity: 0.97;
+}
+
+.blockEmail {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    font-size: 1.3rem;
+    font-weight: bold;
+    padding: 5px;
+    width: 295px;
+    font-family: "Helvetica Neue", sans-serif;
+}
+.blockPassword {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row;
+    font-size: 1.3rem;
+    font-weight: bold;
+    width: 300px;
+    adding: 5px;
+    font-family: "Helvetica Neue", sans-serif;
+}
+.blockLower {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: column;
+}
+.error{
+    width: 200px;
+    height: 30px;
+    color: red;
+    font-size: 1rem;
+    font-weight: bold;
+    margin-left: 50px;
+}
+.errorCorrectPasswordEmail {
+    color: red;
+    font-size: 1rem;
+    font-weight: bold;
+}
+.title {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+.input {
+    width: 180px;
+    border-radius: 5px;
+}
+.checkbox{
+    width: 30px;
+}
+.button {
+    width: 80px;
+    height: 30px;
+    color: #050505;
+    border-width: 3px 0;
+    border-color: #FDBE33 #000 #D77206;
+    border-radius: 6px;
+    background: linear-gradient(#F3AE0F, #E38916) #E38916;
+    vertical-align: 2px;
+}
+.below{
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    margin-top: 10px;
+}
