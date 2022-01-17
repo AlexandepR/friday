@@ -1,12 +1,19 @@
+import React, {useEffect} from 'react';
+import {NavLink} from "react-router-dom";
 import React from "react";
 import {NavLink, Redirect} from "react-router-dom";
 import classes from "./Header.module.css";
 import {Path} from "../Routes/Routes";
+import {forgotAPI} from '../../api/api';
 import {useDispatch, useSelector} from "react-redux";
 import {AppRootStoreType} from "../../bll/store";
 import {logoutTC} from "../LogIn/LogInActions";
 
 export const Header = () => {
+
+
+
+
     const isLoggedIn = useSelector<AppRootStoreType, boolean>(state => state.logIn.isLoggedIn)
     const dispatch = useDispatch()
     const logOut = () => {
@@ -40,6 +47,11 @@ export const Header = () => {
             { !isLoggedIn ? '' : <div className={classes.item}>
                 <NavLink to={Path.CreateNewPassword} activeClassName={classes.active}>
                     Create new password
+                </NavLink>
+            </div>
+            <div className={classes.item}>
+                <NavLink to={Path.ForgotPassword} activeClassName={classes.active}>
+                    Forgot the Password
                 </NavLink>
             </div>}
             { !isLoggedIn ? '' : <div className={classes.item}>
