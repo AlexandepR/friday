@@ -1,0 +1,94 @@
+body {
+    background: linear-gradient(180deg, #E6D4DE 0%, #9890C7 100%);
+    width: 1280px;
+    height: 720px;
+}
+
+.wrapper {
+    display: flex;
+    width: 413px;
+    margin: 0 auto;
+    height: 540px;
+    flex-direction: column;
+    background-color: #F9F9FE;
+}
+
+.title {
+    height: 150px;
+    width: 100%;
+}
+
+.titleName {
+    font-size: 26px;
+    line-height: 39px;
+    color: #2D2E46;
+}
+
+.titleReg {
+    font-size: 22px;
+    line-height: 33px;
+    color: #2D2E46;
+}
+
+.wrapperForm {
+    height: 300px;
+}
+
+.buttonReg {
+    background: #21268F;
+    border-radius: 30px;
+    color: white;
+    height: 33px;
+    width: 187px;
+    font-size: 16px;
+    border: none;
+    margin-top: 100px;
+}
+
+.buttonReg:hover {
+    background-color: #777bc1;
+}
+
+.buttonCancel {
+    background: #D7D8EF;
+    border-radius: 30px;
+    color: #21268F;
+    height: 36px;
+    width: 124px;
+    border: none;
+    margin-right: 10px;
+    margin-top: 30px;
+}
+
+input {
+    border: 0;
+    border-bottom: 1px solid #adadd9;
+    background-color: #F9F9FE;
+    outline: 0;
+    color: #2D2E46;
+    font-size: 16px;
+    line-height: 24px;
+}
+
+.wrapperInput input {
+    width: 347px;
+}
+
+.wrapperInput label {
+    width: 100px;
+    display: block;
+    margin-left: 30px;
+    text-align: left;
+    font-size: 13px;
+    line-height: 20px;
+    color: #24254A;
+    opacity: 0.5;
+}
+
+
+.preloader {
+    position: absolute;
+    margin-top: 150px;
+    margin-left: 150px;
+}
+
