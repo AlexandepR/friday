@@ -15,6 +15,8 @@ export const registrationReducer = (
     action: ActionType
 ): InitStateType => {
     switch (action.type) {
+        case "REGISTRATION/SET-ERROR":
+            return {...state, error: action.error}
         case "REGISTRATION/SET-DISABLED":
             return {...state, disable: action.isDisabled}
         case "REGISTRATION/SET-LOADING":
@@ -42,11 +44,11 @@ export const setError = (error: string) => {
     return {type: 'REGISTRATION/SET-ERROR', error} as const
 }
 
-export const setErrorTC = (error: string) => {
-    return (dispatch: any) => {
-
-    }
-}
+// export const setErrorTC = (error: string) => {
+//     return (dispatch: any) => {
+//
+//     }
+// }
 
 export const createUserTC = (email: string, password: string) => {
     return (dispatch: Dispatch<ActionType>) => {
@@ -54,14 +56,15 @@ export const createUserTC = (email: string, password: string) => {
         dispatch(setLoadingAC(true))
         registrationAPI.createUser(email, password)
             .then(res => {
+                // debugger
                 if (res.status === 201) {
                     alert(res.statusText)
                     dispatch(setSuccesfulAC(true))
                 }
             })
             .catch((err) => {
-                // alert(err.response.data.error)
-                alert(err.response.data.passwordRegExp)
+                dispatch(setError(err.response.data.error))
+                alert(err.response.data.error)
             })
             .finally(() => {
                 dispatch(setLoadingAC(false))
