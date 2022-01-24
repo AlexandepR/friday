@@ -1,45 +1,57 @@
 import {registrationAPI} from "../api/registration-api";
+import {Dispatch} from "redux";
 
 type InitStateType = typeof initState;
 
 const initState = {
     regSuccessful: false,
     isLoading: false,
-    disable: false
+    disable: false,
+    error: '',
 };
 
 export const registrationReducer = (
     state = initState,
-    action: any
+    action: ActionType
 ): InitStateType => {
     switch (action.type) {
-        case "SET-DISABLED":
+        case "REGISTRATION/SET-DISABLED":
             return {...state, disable: action.isDisabled}
-        case "SET-LOADING":
+        case "REGISTRATION/SET-LOADING":
             return {...state, isLoading: action.isLoading}
-        case "SET-ERROR":
+        case "REGISTRATION/SET-SUCCESFUL":
             return {...state, regSuccessful: action.regSuccesful}
         default:
             return state;
     }
 };
 
-export const setStatusAC = (isLoading: boolean) => {
-    return {type: 'SET-LOADING', isLoading}
+export const setLoadingAC = (isLoading: boolean) => {
+    return {type: 'REGISTRATION/SET-LOADING', isLoading} as const
 }
 
 export const setSuccesfulAC = (regSuccesful: boolean) => {
-    return {type: 'SET-ERROR', regSuccesful}
+    return {type: 'REGISTRATION/SET-SUCCESFUL', regSuccesful} as const
 }
 
 export const setDisabledAC = (isDisabled: boolean) => {
-    return {type: 'SET-DISABLED', isDisabled}
+    return {type: 'REGISTRATION/SET-DISABLED', isDisabled} as const
+}
+
+export const setError = (error: string) => {
+    return {type: 'REGISTRATION/SET-ERROR', error} as const
+}
+
+export const setErrorTC = (error: string) => {
+    return (dispatch: any) => {
+
+    }
 }
 
 export const createUserTC = (email: string, password: string) => {
-    return (dispatch: any) => {
+    return (dispatch: Dispatch<ActionType>) => {
         dispatch(setDisabledAC(true))
-        dispatch(setStatusAC(true))
+        dispatch(setLoadingAC(true))
         registrationAPI.createUser(email, password)
             .then(res => {
                 if (res.status === 201) {
@@ -48,12 +60,20 @@ export const createUserTC = (email: string, password: string) => {
                 }
             })
             .catch((err) => {
-                alert(err.response.data.error)
+                // alert(err.response.data.error)
+                alert(err.response.data.passwordRegExp)
             })
             .finally(() => {
-                dispatch(setStatusAC(false))
+                dispatch(setLoadingAC(false))
                 dispatch(setDisabledAC(false))
             })
     }
 }
+
+
+
+type ActionType = ReturnType<typeof setLoadingAC> |
+    ReturnType<typeof setSuccesfulAC> |
+    ReturnType<typeof setDisabledAC> |
+    ReturnType<typeof setError>
 

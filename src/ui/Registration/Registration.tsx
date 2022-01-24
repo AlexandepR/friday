@@ -1,8 +1,8 @@
 import React, {useState} from "react"
 import s from "./Registration.module.css"
 import {useDispatch, useSelector} from "react-redux";
-import {createUserTC, setStatusAC, setSuccesfulAC} from "../../bll/registrationReducer";
-import {useHistory} from "react-router-dom";
+import {createUserTC} from "../../bll/registrationReducer";
+import {Redirect, useHistory} from "react-router-dom";
 import {RootStateType} from "../../bll/store";
 import preloader from "./../../asset/Settings.gif"
 
@@ -18,21 +18,18 @@ export const Registration = () => {
 
     const dispatch = useDispatch()
 
-    const history = useHistory();
+    let history = useHistory();
 
     const handleSubmit = () => {
         dispatch(createUserTC(email, password))
     }
 
     if (regSuccessful) {
-        history.push("/login");
-        dispatch(setSuccesfulAC(false))
+        return <Redirect to={'/login'}/>
     }
 
     const handlerCancel = () => {
-        dispatch(setStatusAC(true))
         history.push("/login");
-        dispatch(setStatusAC(false))
     }
 
     return (

@@ -1,10 +1,14 @@
+body {
+    background: linear-gradient(180deg, #E6D4DE 0%, #9890C7 100%);
+    margin: 0 auto;
+}
+
 .AppBlock {
-    background: url('https://static.vecteezy.com/system/resources/previews/001/201/471/large_2x/splatter-art-png.png');
+    /*background: url('https://static.vecteezy.com/system/resources/previews/001/201/471/large_2x/splatter-art-png.png');*/
     opacity: 50;
     height: 100vh;
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: rgba(60, 85, 92, 0.12);
+    /*background-color: rgba(60, 85, 92, 0.12);*/
 }
-
