@@ -64,7 +64,6 @@ export const createUserTC = (email: string, password: string) => {
             })
             .catch((err) => {
                 dispatch(setError(err.response.data.error))
-                alert(err.response.data.error)
             })
             .finally(() => {
                 dispatch(setLoadingAC(false))

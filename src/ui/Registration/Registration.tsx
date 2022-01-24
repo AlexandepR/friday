@@ -44,7 +44,7 @@ export const Registration = () => {
                 <h3 className={s.titleReg}>Sign Up</h3>
             </div>
             <div className={s.wrapperForm}>
-                <form onSubmit={handleSubmit}>
+                <div>
                     <div className={s.wrapperInput}>
                         <label className={s.label}>Email</label>
                         <input disabled={disabled} type='email' value={email}
@@ -60,8 +60,8 @@ export const Registration = () => {
                             {error}
                         </div>
                     </div>
-                    <button className={s.buttonReg} disabled={disabled}>Sign Up</button>
-                </form>
+                    <button onClick={handleSubmit} className={s.buttonReg} disabled={disabled}>Sign Up</button>
+                </div>
                 <button onClick={handlerCancel} className={s.buttonCancel} disabled={disabled}>Cancel</button>
             </div>
             {setStatus && <div className={s.preloader}><img alt='loader' src={preloader}/></div>}
