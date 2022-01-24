@@ -1,5 +1,5 @@
 import React from "react";
-import {Redirect, Route, Switch} from "react-router-dom";
+import {Route, Switch} from "react-router-dom";
 import {Error404} from "../Error404/Error404";
 import {Registration} from "../Registration/Registration";
 import {Profile} from "../Profile/Profile";
@@ -8,6 +8,7 @@ import {CreateNewPassword} from "../CreateNewPassword/CreateNewPassword";
 import {SuperComponents} from "../SuperComponents/SuperComponents";
 import {LogIn} from "../LogIn/LogIn";
 import ForgotPassword from '../ForgotPassword/ForgotPassword';
+import {Packs} from "../Packs/Packs";
 
 export enum Path {
     LogIn = "/login",
@@ -18,6 +19,7 @@ export enum Path {
     SuperComponents = "/superComponents",
     Error404 = "/404",
     ForgotPassword = "/forgot",
+    Packs = "/Packs",
 }
 
 export const Routes = () => {
@@ -37,6 +39,7 @@ export const Routes = () => {
                 <Route path={Path.SuperComponents} render={() => <SuperComponents/>}/>
                 <Route path={Path.Error404} render={() => <Error404/>}/>
                 <Route path={Path.ForgotPassword} render={() => <ForgotPassword/>}/>
+                <Route path={Path.Packs} render={() => <Packs/>}/>
                {/* <Redirect from={"*"} to={Path.Error404}/>*/}
             </Switch>
         </div>

@@ -36,6 +36,17 @@ export const Header = () => {
                     Profile
                 </NavLink>
             </div>}
+
+
+
+            { !isLoggedIn ? '' : <div className={classes.item}>
+                <NavLink to={Path.Packs} activeClassName={classes.active}>
+                    Packs
+                </NavLink>
+            </div>}
+
+
+
             { isLoggedIn ? '' : <div className={classes.item}>
                 <NavLink to={Path.ResetPassword} activeClassName={classes.active}>
                     Reset password
