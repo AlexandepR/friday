@@ -40,8 +40,8 @@ export const Header = () => {
 
 
             { !isLoggedIn ? '' : <div className={classes.item}>
-                <NavLink to={Path.Packs} activeClassName={classes.active}>
-                    Packs
+                <NavLink to={Path.PacksList} activeClassName={classes.active}>
+                    PacksList
                 </NavLink>
             </div>}
 

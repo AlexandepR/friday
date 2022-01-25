@@ -1,7 +1,7 @@
 import React, {ChangeEvent} from "react";
 import {useDispatch, useSelector} from "react-redux";
-import {searchAC} from "../../bll/searchReduser";
-import {RootStateType} from "../../bll/store";
+import {searchAC} from "../../../bll/searchReduser";
+import {RootStateType} from "../../../bll/store";
 
 
 
