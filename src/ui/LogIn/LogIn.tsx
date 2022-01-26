@@ -1,4 +1,4 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {Registration} from "../Registration/Registration";
 import {Redirect, Route} from "react-router-dom";
 import {Path} from "../Routes/Routes";
@@ -39,8 +39,8 @@ export const LogIn = () => {
             }
         },
         initialValues: {
-            email: '',
-            password: '',
+            email: 'nya43-admin@nya.nya',
+            password: 'nya43-admin@nya.nya',
             rememberMe: false
         },
         onSubmit: values => {
