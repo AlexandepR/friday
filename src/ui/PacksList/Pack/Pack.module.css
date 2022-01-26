@@ -1,0 +1,35 @@
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    /*background-color: #D77206;*/
+}
+
+ul {
+    margin: 10px;
+    padding: 0;
+}
+
+li {
+    list-style-type: none;
+}
+
+ul li {
+    ;
+    /*margin-left: 50px;*/
+}
+
+.name {
+    width: 150px;
+}
+
+.cardsCount {
+    width: 50px;
+}
+
+.updated {
+    width: 250px;
+}
+
+.userName {
+    width: 250px;
+}

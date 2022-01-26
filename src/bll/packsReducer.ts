@@ -25,9 +25,6 @@ export const fetchPacksTC = () => {
         cardsAPI.getCards()
             .then(res => {
                 dispatch(setPacks(res.data.cardPacks))
-                console.log(res.data.cardPacks[0].created)
-                console.log(res.data.cardPacks)
-                debugger
             })
     }
 }

@@ -11,12 +11,13 @@ import {Pack} from "./Pack/Pack";
 export const PacksList = () => {
 
     const cardPacks = useSelector<RootStateType, Array<any>>(state => state.cards.cardPacks)
+    const searchValueCurrently = useSelector<RootStateType, string>(state => state.search.searchValue)
 
     const dispatch = useDispatch()
 
     useEffect(() => {
         dispatch(fetchPacksTC())
-    }, [])
+    }, [searchValueCurrently])
 
     return (
         <div className={s.wrapper}>
@@ -35,7 +36,7 @@ export const PacksList = () => {
                 </div>
             </div>
             <div className={s.rightColumn}>
-                <span>Packs list</span>
+                {/*<span>Packs list</span>*/}
                 <div>
                     <Search/>
                 </div>

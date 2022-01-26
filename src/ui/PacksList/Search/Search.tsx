@@ -3,9 +3,6 @@ import {useDispatch, useSelector} from "react-redux";
 import {searchAC} from "../../../bll/searchReduser";
 import {RootStateType} from "../../../bll/store";
 
-
-
-
 export const Search = () => {
 
     const searchValueCurrently = useSelector<RootStateType, string>(state => state.search.searchValue)

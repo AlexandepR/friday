@@ -15,13 +15,8 @@ export const searchReduser = (state: InitStateType = initState, action: ActionTy
     }
 }
 
-
-
 export const searchAC = (value: string) => {
     return {type: 'PAGINATION/SEARCH-VALUE', value} as const
 }
-
-
-
 
 type ActionType = ReturnType<typeof searchAC>
