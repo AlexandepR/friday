@@ -6,10 +6,15 @@ const instance = axios.create({
 })
 
 export const cardsAPI = {
-    getCards() {
-        return instance.get('cards/pack')
-    }
+    getCards(page?: number) {
+        return instance.get(`cards/pack?page=${page}&pageCount=10`)
+    },
+    // getPage(page: number) {
+    //     return instance.get(`cards/pack?&page=${page}&pageCount=10`)
+    // }
 }
+
+// packName=english
 
 // export type cardsApiType = {
 //     cardsCount?: number

@@ -19,10 +19,10 @@ export const setPacks = (cardPacks: any) => {
     return {type: 'FIND-AND-PAGINATION/SET-PACKS', cardPacks} as const
 }
 
-export const fetchPacksTC = () => {
+export const fetchPacksTC = (page: number) => {
     return (dispatch: any) => {
         // dispatch(setPacks())
-        cardsAPI.getCards()
+        cardsAPI.getCards(page)
             .then(res => {
                 dispatch(setPacks(res.data.cardPacks))
             })
