@@ -14,8 +14,7 @@ export const App = () => {
     }, [])
 
     return (
-        <div className={styles.AppBlock}
-        >
+        <div className={styles.AppBlock}>
             <Header />
             <Routes />
         </div>

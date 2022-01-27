@@ -2,12 +2,13 @@ import * as React from 'react';
 import Pagination from '@mui/material/Pagination';
 import Stack from '@mui/material/Stack';
 import {useDispatch, useSelector} from "react-redux";
-import {pageSelection} from "../../../bll/paginationReduser";
+import {pageSelection} from "../../../bll/paginationFindReducer";
 import {RootStateType} from "../../../bll/store";
 
 export const BasicPagination = () => {
 
-    const currentPage = useSelector<RootStateType, number>(state => state.pagination.currentPage)
+    const currentPage = useSelector<RootStateType, number>(state => state.paginationFind.currentPage)
+    const cardPacksTotalCount = useSelector<RootStateType, number>(state => state.paginationFind.cardPacksTotalCount)
 
     const dispatch = useDispatch()
 
@@ -20,7 +21,7 @@ export const BasicPagination = () => {
     return (
         <Stack spacing={2}>
             <Pagination
-                count={1000}
+                count={cardPacksTotalCount}
                 onChange={selectPage}
                 page={currentPage}
             />

@@ -1,4 +1,4 @@
-import {Search} from "./Search/Search"
+import {Find} from "./Find/Find"
 import s from "./PacksList.module.css"
 import {RangeSlider} from "./Range/Range";
 import {useEffect} from "react";
@@ -6,27 +6,20 @@ import {useDispatch, useSelector} from "react-redux";
 import {fetchPacksTC} from "../../bll/packsReducer";
 import {RootStateType} from "../../bll/store";
 import {Pack} from "./Pack/Pack";
-import {Pagination} from "@mui/material";
-import Stack from "@mui/material/Stack";
 import * as React from "react";
 import {BasicPagination} from "./BasicPagination/BasicPagination";
 
 export const PacksList = () => {
 
     const cardPacks = useSelector<RootStateType, Array<any>>(state => state.cards.cardPacks)
-    // const searchValueCurrently = useSelector<RootStateType, string>(state => state.search.searchValue)
-    const currentPage = useSelector<RootStateType, number>(state => state.pagination.currentPage)
-
+    const currentPage = useSelector<RootStateType, number>(state => state.paginationFind.currentPage)
+    const searchValue = useSelector<RootStateType, string>(state => state.paginationFind.searchValue)
 
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(fetchPacksTC(currentPage))
-    }, [currentPage])
-
-    // useEffect(() => {
-    //     dispatch(fetchPacksTC)
-    // }, [currentPage])
+        dispatch(fetchPacksTC(currentPage, searchValue))
+    }, [currentPage, searchValue])
 
     return (
         <div className={s.wrapper}>
@@ -47,7 +40,7 @@ export const PacksList = () => {
             <div className={s.rightColumn}>
                 {/*<span>Packs list</span>*/}
                 <div>
-                    <Search/>
+                    <Find/>
                 </div>
                 <div>
                     {cardPacks.map(m => <Pack
@@ -58,7 +51,7 @@ export const PacksList = () => {
                     />)}
                 </div>
                 <div>
-                    <BasicPagination />
+                    <BasicPagination/>
                 </div>
             </div>
         </div>

@@ -1,4 +1,5 @@
 import { cardsAPI } from "../api/cards-api"
+import {setCardPacksTotalCount} from "./paginationFindReducer";
 
 const initialState = {
     cardPacks: []
@@ -19,12 +20,14 @@ export const setPacks = (cardPacks: any) => {
     return {type: 'FIND-AND-PAGINATION/SET-PACKS', cardPacks} as const
 }
 
-export const fetchPacksTC = (page: number) => {
+
+
+export const fetchPacksTC = (page: number, searchValue: string) => {
     return (dispatch: any) => {
-        // dispatch(setPacks())
-        cardsAPI.getCards(page)
+        cardsAPI.getCards(page, searchValue)
             .then(res => {
                 dispatch(setPacks(res.data.cardPacks))
+                dispatch(setCardPacksTotalCount(res.data.cardPacksTotalCount))
             })
     }
 }

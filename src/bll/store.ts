@@ -8,7 +8,7 @@ import {createNewPasswordReducer} from "./createNewPasswordReducer";
 import {error404Reducer} from "./error404Reducer";
 import {forgotReducer} from './forgotReducer';
 import {packsReducer} from "./packsReducer";
-import {paginationReduser} from "./paginationReduser";
+import {paginationFindReducer} from "./paginationFindReducer";
 
 export type RootStateType = ReturnType<typeof rootReducer>;
 
@@ -20,7 +20,7 @@ const rootReducer = combineReducers({
     createNewPassword: createNewPasswordReducer,
     error404: error404Reducer,
     forgot: forgotReducer,
-    pagination: paginationReduser,
+    paginationFind: paginationFindReducer,
     cards: packsReducer,
 });
 export const store = createStore(rootReducer, applyMiddleware(thunk));

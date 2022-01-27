@@ -1,20 +1,20 @@
-import {cardsAPI} from "../api/cards-api";
-import { setPacks } from "./packsReducer";
-
 const initState = {
-    // searchValue: '',
-    currentPage: 3,
+    searchValue: '',
+    currentPage: 1,
+    cardPacksTotalCount: 1,
+
 }
 
 export type InitStateType = typeof initState
 
-export const paginationReduser = (state: InitStateType = initState, action: ActionType) => {
+export const paginationFindReducer = (state: InitStateType = initState, action: ActionType) => {
     switch (action.type) {
+        case "FIND-AND-PAGINATION/SET-PACKS-TOTAL-COUNT":
+            return {...state, cardPacksTotalCount: action.cardPacksTotalCount}
         case "PAGINATION/SEARCH-VALUE":
             return {...state, searchValue: action.value}
         case "PAGINATION/PAGE-SELECTION":
             return {...state, currentPage: action.page}
-
         default:
             return state
     }
@@ -26,6 +26,10 @@ export const searchAC = (value: string) => {
 
 export const pageSelection = (page: number) => {
     return {type: 'PAGINATION/PAGE-SELECTION', page} as const
+}
+
+export const setCardPacksTotalCount = (cardPacksTotalCount: number) => {
+    return {type: 'FIND-AND-PAGINATION/SET-PACKS-TOTAL-COUNT', cardPacksTotalCount} as const
 }
 
 
@@ -44,4 +48,5 @@ export const pageSelection = (page: number) => {
 
 
 type ActionType = ReturnType<typeof searchAC> |
-    ReturnType<typeof pageSelection>
+    ReturnType<typeof pageSelection> |
+    ReturnType<typeof setCardPacksTotalCount>

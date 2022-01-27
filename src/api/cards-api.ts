@@ -6,12 +6,9 @@ const instance = axios.create({
 })
 
 export const cardsAPI = {
-    getCards(page?: number) {
-        return instance.get(`cards/pack?page=${page}&pageCount=10`)
+    getCards(page?: number, searchValue?: string) {
+        return instance.get(`cards/pack?packName=${searchValue}&page=${page}&pageCount=10`)
     },
-    // getPage(page: number) {
-    //     return instance.get(`cards/pack?&page=${page}&pageCount=10`)
-    // }
 }
 
 // packName=english
