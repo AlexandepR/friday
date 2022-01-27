@@ -6,28 +6,11 @@ const instance = axios.create({
 })
 
 export const cardsAPI = {
-    getCards(page?: number, searchValue?: string) {
-        return instance.get(`cards/pack?packName=${searchValue}&page=${page}&pageCount=10`)
+    getCards(page?: number,
+             searchValue?: string,
+             sortPacksName?: number,
+             sortPacksCards?: number // не работает
+    ) {
+        return instance.get(`cards/pack?&packName=${searchValue}&sortPacks=${sortPacksName}name&page=${page}&pageCount=10`)
     },
 }
-
-// packName=english
-
-// export type cardsApiType = {
-//     cardsCount?: number
-//     created?: string
-//     deckCover?: any
-//     grade?: number
-//     more_id?: string
-//     name?: string
-//     path?: string
-//     private?: boolean
-//     rating?: number
-//     shots?: number
-//     type?: string
-//     updated?: string
-//     user_id?: string
-//     user_name?: string
-//     __v?: number
-//     _id?: string
-// }

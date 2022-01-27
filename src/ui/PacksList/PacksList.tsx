@@ -5,21 +5,22 @@ import {useEffect} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {fetchPacksTC} from "../../bll/packsReducer";
 import {RootStateType} from "../../bll/store";
-import {Pack} from "./Pack/Pack";
+import {Packs} from "./Packs/Packs";
 import * as React from "react";
 import {BasicPagination} from "./BasicPagination/BasicPagination";
 
 export const PacksList = () => {
 
-    const cardPacks = useSelector<RootStateType, Array<any>>(state => state.cards.cardPacks)
     const currentPage = useSelector<RootStateType, number>(state => state.paginationFind.currentPage)
     const searchValue = useSelector<RootStateType, string>(state => state.paginationFind.searchValue)
+    const sortPacksName = useSelector<RootStateType, number>(state => state.paginationFind.sortPacksName)
+    const sortPacksCards = useSelector<RootStateType, number>(state => state.paginationFind.sortPacksCards)
 
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(fetchPacksTC(currentPage, searchValue))
-    }, [currentPage, searchValue])
+        dispatch(fetchPacksTC(currentPage, searchValue, sortPacksName, sortPacksCards))
+    }, [currentPage, searchValue, sortPacksName, sortPacksCards])
 
     return (
         <div className={s.wrapper}>
@@ -38,17 +39,11 @@ export const PacksList = () => {
                 </div>
             </div>
             <div className={s.rightColumn}>
-                {/*<span>Packs list</span>*/}
                 <div>
                     <Find/>
                 </div>
                 <div>
-                    {cardPacks.map(m => <Pack
-                        name={m.name}
-                        cardsCount={m.cardsCount}
-                        updated={m.updated}
-                        userName={m.user_name}
-                    />)}
+                    <Packs/>
                 </div>
                 <div>
                     <BasicPagination/>

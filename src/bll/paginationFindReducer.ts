@@ -2,6 +2,8 @@ const initState = {
     searchValue: '',
     currentPage: 1,
     cardPacksTotalCount: 1,
+    sortPacksName: -1,
+    sortPacksCards: -1,
 
 }
 
@@ -9,6 +11,10 @@ export type InitStateType = typeof initState
 
 export const paginationFindReducer = (state: InitStateType = initState, action: ActionType) => {
     switch (action.type) {
+        case "FIND-AND-PAGINATION/SORT-CARDS":
+            return {...state, sortPacksCards: action.sortPacksCards}
+        case "FIND-AND-PAGINATION/SORT":
+            return {...state, sortPacksName: action.sortPacksName}
         case "FIND-AND-PAGINATION/SET-PACKS-TOTAL-COUNT":
             return {...state, cardPacksTotalCount: action.cardPacksTotalCount}
         case "PAGINATION/SEARCH-VALUE":
@@ -32,21 +38,16 @@ export const setCardPacksTotalCount = (cardPacksTotalCount: number) => {
     return {type: 'FIND-AND-PAGINATION/SET-PACKS-TOTAL-COUNT', cardPacksTotalCount} as const
 }
 
+export const sortPacksAC = (sortPacksName: number) => {
+    return {type: 'FIND-AND-PAGINATION/SORT', sortPacksName: sortPacksName} as const
+}
 
-// export const pageSelectionTC = (page: number) => {
-//     return (dispatch: any) => {
-//         cardsAPI.getPage(page)
-//             .then(res => {
-//                 console.log(res.data.cardPacks)
-//                 dispatch(setPacks(res.data.cardPacks))
-//                 // dispatch(pageSelection(page))
-//
-//             })
-//
-//     }
-// }
-
+export const sortPacksCardsAC = (sortPacksCards: number) => {
+    return {type: 'FIND-AND-PAGINATION/SORT-CARDS', sortPacksCards} as const
+}
 
 type ActionType = ReturnType<typeof searchAC> |
     ReturnType<typeof pageSelection> |
-    ReturnType<typeof setCardPacksTotalCount>
+    ReturnType<typeof setCardPacksTotalCount> |
+    ReturnType<typeof sortPacksAC> |
+    ReturnType<typeof sortPacksCardsAC>
