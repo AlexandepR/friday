@@ -15,12 +15,16 @@ export const PacksList = () => {
     const searchValue = useSelector<RootStateType, string>(state => state.paginationFind.searchValue)
     const sortPacksName = useSelector<RootStateType, number>(state => state.paginationFind.sortPacksName)
     const sortPacksCards = useSelector<RootStateType, number>(state => state.paginationFind.sortPacksCards)
+    const maxCardsCount = useSelector<RootStateType, number>(state => state.paginationFind.maxCardsCount)
+    const minCardsCount = useSelector<RootStateType, number>(state => state.paginationFind.minCardsCount)
+
 
     const dispatch = useDispatch()
 
     useEffect(() => {
-        dispatch(fetchPacksTC(currentPage, searchValue, sortPacksName, sortPacksCards))
-    }, [currentPage, searchValue, sortPacksName, sortPacksCards])
+        dispatch(fetchPacksTC(currentPage, searchValue, sortPacksName, sortPacksCards, maxCardsCount, minCardsCount))
+    }, [currentPage, searchValue, sortPacksName, sortPacksCards, maxCardsCount, minCardsCount])
+
 
     return (
         <div className={s.wrapper}>
@@ -35,7 +39,7 @@ export const PacksList = () => {
                     <RangeSlider/>
                 </div>
                 <div>
-                    <button>Search</button>
+                    {/*<button onClick={searchHandler}>Search</button>*/}
                 </div>
             </div>
             <div className={s.rightColumn}>

@@ -9,8 +9,10 @@ export const cardsAPI = {
     getCards(page?: number,
              searchValue?: string,
              sortPacksName?: number,
-             sortPacksCards?: number // не работает
+             sortPacksCards?: number, // не работает
+             maxCardsCount?: number,
+             minCardsCount?: number,
     ) {
-        return instance.get(`cards/pack?&packName=${searchValue}&sortPacks=${sortPacksName}name&page=${page}&pageCount=10`)
+        return instance.get(`cards/pack?&packName=${searchValue}&min=${minCardsCount}&max=${maxCardsCount}&sortPacks=${sortPacksName}name&page=${page}&pageCount=10`)
     },
 }

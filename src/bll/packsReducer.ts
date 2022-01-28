@@ -1,5 +1,5 @@
 import {cardsAPI} from "../api/cards-api"
-import {setCardPacksTotalCount} from "./paginationFindReducer";
+import {setCardPacksTotalCount, setMaxMinCardsCount} from "./paginationFindReducer";
 
 const initialState = {
     cardPacks: []
@@ -25,15 +25,19 @@ export const fetchPacksTC = (
     page: number,
     searchValue: string,
     sortPacks: number,
-    sortPacksCards: number
+    sortPacksCards: number,
+    maxCardsCount: number,
+    minCardsCount: number,
 ) => {
 
     return (dispatch: any) => {
-        cardsAPI.getCards(page, searchValue, sortPacks, sortPacksCards)
+        cardsAPI.getCards(page, searchValue, sortPacks, sortPacksCards, maxCardsCount, minCardsCount)
             .then(res => {
                 dispatch(setPacks(res.data.cardPacks))
                 dispatch(setCardPacksTotalCount(res.data.cardPacksTotalCount))
-                // dispatch(sortPacksAC(sortPacks))
+                // dispatch(setMaxMinCardsCount(res.data.maxCardsCount, res.data.minCardsCount))
+                console.log(res.data.maxCardsCount)
+                console.log(res.data.minCardsCount)
             })
     }
 }

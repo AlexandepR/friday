@@ -4,13 +4,16 @@ const initState = {
     cardPacksTotalCount: 1,
     sortPacksName: -1,
     sortPacksCards: -1,
-
+    maxCardsCount: 1000,
+    minCardsCount: 0,
 }
 
 export type InitStateType = typeof initState
 
 export const paginationFindReducer = (state: InitStateType = initState, action: ActionType) => {
     switch (action.type) {
+        case "FIND-AND-PAGINATION/SET-MAX-MIN":
+            return {...state, maxCardsCount: action.maxCardsCount, minCardsCount: action.minCardsCount}
         case "FIND-AND-PAGINATION/SORT-CARDS":
             return {...state, sortPacksCards: action.sortPacksCards}
         case "FIND-AND-PAGINATION/SORT":
@@ -46,8 +49,13 @@ export const sortPacksCardsAC = (sortPacksCards: number) => {
     return {type: 'FIND-AND-PAGINATION/SORT-CARDS', sortPacksCards} as const
 }
 
+export const setMaxMinCardsCount = (maxCardsCount: number, minCardsCount: number) => {
+    return {type: 'FIND-AND-PAGINATION/SET-MAX-MIN', maxCardsCount, minCardsCount} as const
+}
+
 type ActionType = ReturnType<typeof searchAC> |
     ReturnType<typeof pageSelection> |
     ReturnType<typeof setCardPacksTotalCount> |
     ReturnType<typeof sortPacksAC> |
-    ReturnType<typeof sortPacksCardsAC>
+    ReturnType<typeof sortPacksCardsAC> |
+    ReturnType<typeof setMaxMinCardsCount>
