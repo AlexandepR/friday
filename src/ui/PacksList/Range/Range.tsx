@@ -14,8 +14,6 @@ export const RangeSlider = () => {
     const maxCardsCount = useSelector<RootStateType, number>(state => state.paginationFind.maxCardsCount)
     const minCardsCount = useSelector<RootStateType, number>(state => state.paginationFind.minCardsCount)
 
-
-
     const [value, setValue] = React.useState<number[]>([minCardsCount, maxCardsCount]);
 
     const dispatch = useDispatch()
@@ -31,8 +29,6 @@ export const RangeSlider = () => {
         console.log(value)
         dispatch(setMaxMinCardsCount(value[1], value[0]))
     }
-
-
 
     return (
         <Box sx={{ width: 190 }}>
